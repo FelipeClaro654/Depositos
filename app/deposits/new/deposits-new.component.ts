@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Deposit } from './../deposit.model';
+import { DepositService } from './../deposit.service';
 
 @Component({
     moduleId: module.id,
@@ -6,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'deposits-new.component.html'
 })
 export class DepositsNewComponent implements OnInit {
-    constructor() { }
+    deposits: Deposit[] = [];
 
-    ngOnInit() { }
+    constructor(
+        private depositService: DepositService
+    ) { }
+
+    ngOnInit(): void {
+        this.depositService.getDeposits()
+            .then((deposits: Deposit[]) => {
+                this.deposits = deposits;
+            })
+    }
 }

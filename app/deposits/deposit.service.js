@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var deposits_mock_1 = require("./deposits-mock");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
 var DepositService = (function () {
-    function DepositService() {
+    function DepositService(http) {
+        this.http = http;
+        this.depositsUrl = "app/deposits";
     }
     DepositService.prototype.getDeposits = function () {
-        return Promise.resolve(deposits_mock_1.DEPOSITS);
+        return this.http.get(this.depositsUrl)
+            .toPromise()
+            .then(function (response) { return response.json().data; });
     };
     return DepositService;
 }());
 DepositService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], DepositService);
 exports.DepositService = DepositService;
 //# sourceMappingURL=deposit.service.js.map

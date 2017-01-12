@@ -9,10 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var deposit_service_1 = require("./../deposit.service");
 var DepositsNewComponent = (function () {
-    function DepositsNewComponent() {
+    function DepositsNewComponent(depositService) {
+        this.depositService = depositService;
+        this.deposits = [];
     }
-    DepositsNewComponent.prototype.ngOnInit = function () { };
+    DepositsNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.depositService.getDeposits()
+            .then(function (deposits) {
+            _this.deposits = deposits;
+        });
+    };
     return DepositsNewComponent;
 }());
 DepositsNewComponent = __decorate([
@@ -21,7 +30,7 @@ DepositsNewComponent = __decorate([
         selector: 'deposits-new',
         templateUrl: 'deposits-new.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [deposit_service_1.DepositService])
 ], DepositsNewComponent);
 exports.DepositsNewComponent = DepositsNewComponent;
 //# sourceMappingURL=deposits-new.component.js.map
