@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
-var deposits_list_component_1 = require("./list/deposits-list.component");
-var deposits_new_component_1 = require("./new/deposits-new.component");
 var deposit_service_1 = require("./deposit.service");
 var DepositsModule = (function () {
     function DepositsModule() {
@@ -25,14 +23,8 @@ DepositsModule = __decorate([
             common_1.CommonModule,
             forms_1.FormsModule
         ],
-        exports: [
-            deposits_list_component_1.DepositsListComponent,
-            deposits_new_component_1.DepositsNewComponent
-        ],
-        declarations: [
-            deposits_list_component_1.DepositsListComponent,
-            deposits_new_component_1.DepositsNewComponent
-        ],
+        exports: [],
+        declarations: [],
         providers: [
             deposit_service_1.DepositService
         ],

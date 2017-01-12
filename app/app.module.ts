@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -11,13 +12,14 @@ import { DepositsModule } from "./deposits/deposits.module";
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         DepositsModule,
         HttpModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService)
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
-    exports: [],
+    exports: [FormsModule],
     providers: []
 })
 export class AppModule { }

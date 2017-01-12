@@ -7,5 +7,86 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
   </div>
 </nav>
-<deposits-new></deposits-new>
-<deposits-list></deposits-list>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-sm-8 col-xl-4 col-md-6 col-lg-5 mx-auto">
+            <br>
+            <h2>All Deposits</h2>
+            <hr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Operation</th>
+                            <th class="text-center">Value</th>
+                            <th class="text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center w-25 p-3">
+                                <div class="form-group">
+                                    <select class="form-control"
+                                        required
+                                        name="type"
+                                        [(ngModel)]="deposit.type">
+                                        <option>D</option>
+                                        <option>W</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text-center w-50 p-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="R$"
+                                        required
+                                        [(ngModel)]="deposit.value"
+                                      >
+                                </div>
+                            </td>
+                            <td class="text-center w-25 p-3">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success" (click)="addDeposit(deposit)">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-sm-8 col-xl-4 col-md-6 col-lg-5 mx-auto">
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let d of deposits" [ngClass]="getTypeTrClass(d.type)" class="lead">
+                        <td class="text-center w-25 p-3" [ngClass]="getTypeTdClass(d.type)">
+                            <strong>{{d.type}}</strong>
+                        </td>
+                        <td class="text-center w-50 p-3" [ngClass]="getTypeTdClass(d.type)">
+                            <strong>R$ {{d.value}}</strong>
+                        </td>
+                        <td class="text-center w-25 p-3">
+                            <button (click)="deleteDeposit(d)" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <strong>Total:</strong>
+                        </td>
+                        <td class="text-center">
+                             <strong>R$ {{getTotal(deposits).total}}</strong> 
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
