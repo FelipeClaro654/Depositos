@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row  ">
+        <div class="col-xs-4 col-sm-8 col-xl-4 col-md-6 col-lg-5 mx-auto">
+            <br>
+            <h2>All Deposits</h2>
+            <br>
+            <table class="table">
+                <thead >
+                    <tr>
+                        <th class="text-center">Operation</th>
+                        <th class="text-center">Value</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let g of deposits" [ngClass]="getTypeTrClass(g.type)" class="lead">
+                        <td class="text-center w-25 p-3" [ngClass]="getTypeTdClass(g.type)">
+                            <strong>{{g.type}}</strong>
+                        </td>
+                        <td class="text-center  w-50 p-3" [ngClass]="getTypeTdClass(g.type)">
+                            <strong>{{g.value}}</strong>
+                        </td>
+                        <td class="text-center w-25 p-3">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
