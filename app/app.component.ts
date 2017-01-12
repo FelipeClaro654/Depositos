@@ -56,15 +56,25 @@ export class AppComponent implements OnInit {
             })
     }
 
-    addDeposit(deposit: Deposit[]): void {
-        console.log(deposit);
-        let promise;
-        promise = this.depositService.create(this.deposit);
-        this.load();
+    addDeposit(deposit: Deposit): void {
+        if(this.checkNumeric(deposit)){
+            let promise;
+            promise = this.depositService.create(this.deposit);
+            this.load();
+        }
+    }
+
+    checkNumeric(deposit: Deposit): boolean {
+        if(isNaN(deposit.value)){
+            alert("Invalid Number!");
+            deposit.value = null;
+            return false;
+        }
+
+        return true;
     }
 
     deleteDeposit(deposit: Deposit): void{
-        console.log(deposit)
         this.depositService
             .delete(deposit).then(()=> this.load());
     }

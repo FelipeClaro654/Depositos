@@ -53,14 +53,22 @@ var AppComponent = (function () {
         });
     };
     AppComponent.prototype.addDeposit = function (deposit) {
-        console.log(deposit);
-        var promise;
-        promise = this.depositService.create(this.deposit);
-        this.load();
+        if (this.checkNumeric(deposit)) {
+            var promise = void 0;
+            promise = this.depositService.create(this.deposit);
+            this.load();
+        }
+    };
+    AppComponent.prototype.checkNumeric = function (deposit) {
+        if (isNaN(deposit.value)) {
+            alert("Invalid Number!");
+            deposit.value = null;
+            return false;
+        }
+        return true;
     };
     AppComponent.prototype.deleteDeposit = function (deposit) {
         var _this = this;
-        console.log(deposit);
         this.depositService
             .delete(deposit).then(function () { return _this.load(); });
     };
