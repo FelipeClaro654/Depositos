@@ -34,6 +34,19 @@ var DepositsListComponent = (function () {
             'text-danger': type === "W"
         };
     };
+    DepositsListComponent.prototype.getTotal = function (deposits) {
+        var total = 0;
+        for (var _i = 0, deposits_1 = deposits; _i < deposits_1.length; _i++) {
+            var d = deposits_1[_i];
+            if (d.type === "D") {
+                total += +d.value;
+            }
+            else {
+                total += -(+d.value);
+            }
+        }
+        return { total: total };
+    };
     return DepositsListComponent;
 }());
 DepositsListComponent = __decorate([

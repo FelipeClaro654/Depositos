@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var NameModule = (function () {
-    function NameModule() {
+var DepositsNewComponent = (function () {
+    function DepositsNewComponent() {
     }
-    return NameModule;
+    DepositsNewComponent.prototype.ngOnInit = function () { };
+    return DepositsNewComponent;
 }());
-NameModule = __decorate([
-    core_1.NgModule({
-        imports: [],
-        exports: [],
-        declarations: [],
-        providers: [],
+DepositsNewComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'deposits-new',
+        templateUrl: 'deposits-new.component.html'
     }),
     __metadata("design:paramtypes", [])
-], NameModule);
-exports.NameModule = NameModule;
-//# sourceMappingURL=deposit-routing.module.js.map
+], DepositsNewComponent);
+exports.DepositsNewComponent = DepositsNewComponent;
+//# sourceMappingURL=deposits-new.component.js.map

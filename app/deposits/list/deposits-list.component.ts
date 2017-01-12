@@ -35,4 +35,17 @@ export class DepositsListComponent implements OnInit {
             'text-danger' : type === "W"
         }
     }
+
+    getTotal(deposits: Deposit[]): {} {
+        let total: number = 0;
+
+        for (let d of deposits){
+            if(d.type === "D"){
+                total += +d.value;
+            }else{
+                total += -(+d.value);
+            }
+        }
+        return {total: total};
+    }
 }
