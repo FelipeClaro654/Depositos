@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
                 total += -(+d.value);
             }
         }
+
         return {total: total};
     }
 

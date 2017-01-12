@@ -1,67 +1,39 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Deposits</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  </div>
-</nav>
+<img class="background" src="http://wp-krypton.s3.amazonaws.com/wp-content/uploads/sites/3/2015/02/financial-results-business-report-pen-papers-notepad-620x330.jpg" alt="">
 
 <div class="container">
     <div class="row">
         <div class="col-xs-4 col-sm-8 col-xl-4 col-md-6 col-lg-5 mx-auto">
             <br>
-            <h2>All Deposits</h2>
-            <hr>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="text-center">Operation</th>
-                            <th class="text-center">Value</th>
-                            <th class="text-center"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center w-25 p-3">
-                                <div class="form-group">
-                                    <select class="form-control"
-                                        required
-                                        name="type"
-                                        [(ngModel)]="deposit.type">
-                                        <option>D</option>
-                                        <option>W</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td class="text-center w-50 p-3">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="R$"
-                                        required
-                                        [(ngModel)]="deposit.value"
-                                      >
-                                </div>
-                            </td>
-                            <td class="text-center w-25 p-3">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success" (click)="addDeposit(deposit)">+</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-4 col-sm-8 col-xl-4 col-md-6 col-lg-5 mx-auto">
+            <br>
             <table class="table">
                 <tbody>
+                    <tr>
+                        <td class="text-center w-25 p-3">
+                            <div class="form-group">
+                                <label for="type">Operation</label>
+                                <select class="form-control"
+                                    required
+                                    name="type"
+                                    [(ngModel)]="deposit.type">
+                                    <option>D</option>
+                                    <option>W</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="text-center w-50 p-3">
+                            <div class="form-group">
+                                <label for="value">Value</label>
+                                <input type="text" class="form-control" placeholder="R$"
+                                    name="value"
+                                    required
+                                    [(ngModel)]="deposit.value"
+                                    >
+                            </div>
+                        </td>
+                        <td class="text-center w-25 p-3">
+                            <button type="button" class="btn btn-success btn-add" (click)="addDeposit(deposit)">+</button>
+                        </td>
+                    </tr>
                     <tr *ngFor="let d of deposits" [ngClass]="getTypeTrClass(d.type)" class="lead">
                         <td class="text-center w-25 p-3" [ngClass]="getTypeTdClass(d.type)">
                             <strong>{{d.type}}</strong>
@@ -70,7 +42,9 @@
                             <strong>R$ {{d.value}}</strong>
                         </td>
                         <td class="text-center w-25 p-3">
-                            <button (click)="deleteDeposit(d)" class="btn btn-danger btn-sm">Delete</button>
+                            <button (click)="deleteDeposit(d)" class="btn btn-danger btn-sm close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
