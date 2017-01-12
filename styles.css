@@ -2,8 +2,12 @@ select {
     padding: 0 0 0 6% !important;
 }
 
-table{
+.table{
     background: rgba(255, 255, 255, 0.39);
+}
+
+.table td{
+    border-top: 0;
 }
 
 form{
