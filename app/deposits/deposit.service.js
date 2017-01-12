@@ -15,11 +15,26 @@ var DepositService = (function () {
     function DepositService(http) {
         this.http = http;
         this.depositsUrl = "app/deposits";
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     DepositService.prototype.getDeposits = function () {
         return this.http.get(this.depositsUrl)
             .toPromise()
             .then(function (response) { return response.json().data; });
+    };
+    DepositService.prototype.create = function (deposit) {
+        return this.http.post(this.depositsUrl, JSON.stringify(deposit), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            return response.json().data;
+        });
+    };
+    DepositService.prototype.delete = function (deposit) {
+        var url = this.depositsUrl + "/" + deposit.id;
+        return this.http
+            .delete(url)
+            .toPromise()
+            .then(function () { return deposit; });
     };
     return DepositService;
 }());
