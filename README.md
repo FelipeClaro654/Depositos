@@ -3,7 +3,7 @@
   Aplicação em Angular2 + Typescript
 
   Requisitos:
-  - Instalar Node.js e npm na máquina
+  - Instalar Node.js na máquina e atualizar o npm (npm install npm@latest -g)
   - Clonar este repositório
   - Rodar npm install para instalar as dependências do pacote
   - Rodar npm install bootstrap@4.0.0-alpha.6 para instalar bootstrap v4
